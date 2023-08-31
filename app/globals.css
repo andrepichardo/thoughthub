@@ -3,5 +3,29 @@
 @tailwind utilities;
 
 .containerLayout {
-  @apply mx-auto w-full h-full max-w-[1920px] px-3 xs:px-6 md:px-8 2xl:px-10;
+  @apply mx-auto w-full h-full max-w-4xl px-2 xs:px-3 md:px-4 2xl:px-6;
+}
+
+body { background: #fce6e6;}
+
+#scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+#scrollbar::-webkit-scrollbar-track {
+  background: rgb(236, 221, 221);
+  border-radius: 10px;
+  margin: 10px;
+}
+
+/* Handle */
+#scrollbar::-webkit-scrollbar-thumb {
+  background: rgb(212, 107, 107);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+#scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #b04a4a;
 }
