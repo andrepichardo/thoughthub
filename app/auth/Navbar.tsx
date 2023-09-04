@@ -9,7 +9,6 @@ import Logged from "./Logged";
 
 export default async function Navbar() {
   const session = await getServerSession(authOptions);
-  console.log(session);
   return (
     <nav className=" flex justify-between items-center gap-2 min-h-[45px] h-full">
       <Link href="/">
@@ -20,10 +19,7 @@ export default async function Navbar() {
       <ul>
         {!session?.user && <Login />}
         {session?.user && (
-          <Logged
-            name={session.user.name}
-            image={session.user.image as string}
-          />
+          <Logged name={session.user?.name} image={session.user?.image || ""} />
         )}
       </ul>
     </nav>
