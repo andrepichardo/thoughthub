@@ -10,7 +10,7 @@ import Logged from "./Logged";
 export default async function Navbar() {
   const session = await getServerSession(authOptions);
   return (
-    <nav className=" flex justify-between items-center gap-2 min-h-[45px] h-full">
+    <nav className="px-2 xs:px-3 md:px-4 2xl:px-6 flex justify-between items-center gap-2 min-h-[45px] h-full">
       <Link href="/">
         <h1 className="text-lg font-bold flex items-center gap-1 text-red-500">
           <Image src={Logo} width={30} height={30} alt="" /> PostItApp

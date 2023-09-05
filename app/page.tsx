@@ -9,6 +9,7 @@ export default function Home() {
       className="w-full h-full flex flex-col max-h-[85vh] overflow-auto"
     >
       <AddPost />
+      <hr className="my-4" />
     </main>
   );
 }

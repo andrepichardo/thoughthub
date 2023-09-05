@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .containerLayout {
-  @apply mx-auto w-full h-full max-w-4xl px-2 xs:px-3 md:px-4 2xl:px-6;
+  @apply mx-auto w-full h-full max-w-4xl ;
 }
 
 body { background: #fce6e6;}

@@ -36,7 +36,7 @@ const Logged = ({ image, name }: User) => {
         href="/dashboard"
         className="text-red-500 font-bold flex items-center gap-2"
       >
-        {name}
+        <span className="hidden md:block">{name}</span>
         <Image
           className="rounded-full"
           width={45}
