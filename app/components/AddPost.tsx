@@ -1,21 +1,36 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import { useMutation, useQueryClient } from "react-query";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { useMutation, useQueryClient } from 'react-query';
+import axios, { AxiosError } from 'axios';
+import { toast } from 'react-hot-toast';
 
 const AddPost = () => {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
+  let toastPostID: string = 'toastPostID';
 
   // Create a post
   const { mutate } = useMutation(
     async (message: string) =>
-      await axios.post("/api/posts/addPost", { message })
+      await axios.post('/api/posts/addPost', { message }),
+    {
+      onError: (error) => {
+        if (error instanceof AxiosError)
+          toast.error(error?.response?.data.message, { id: toastPostID });
+        setIsDisabled(false);
+      },
+      onSuccess: () => {
+        toast.success('Post has been made successfully👍', { id: toastPostID });
+        setMessage('');
+        setIsDisabled(false);
+      },
+    }
   );
 
   const submitPost = async (e: React.FormEvent) => {
     e.preventDefault();
+    toastPostID = toast.loading('Creating post...', { id: toastPostID });
     setIsDisabled(true);
     mutate(message);
   };
@@ -41,7 +56,7 @@ const AddPost = () => {
         <div className="flex items-center justify-between gap-2">
           <p
             className={`font-bold ${
-              message.length > 300 ? "text-red-600" : "text-gray-400"
+              message.length > 300 ? 'text-red-500' : 'text-gray-400'
             }`}
           >
             {message.length}/300
@@ -50,8 +65,8 @@ const AddPost = () => {
             disabled={isDisabled}
             className={`text-sm  ${
               isDisabled
-                ? "bg-red-300 cursor-not-allowed"
-                : "bg-red-500 hover:bg-red-400"
+                ? 'bg-red-300 cursor-not-allowed'
+                : 'bg-red-500 hover:bg-red-400'
             } text-white px-5 py-2 rounded-lg font-bold self-end`}
             type="submit"
           >
