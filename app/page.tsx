@@ -24,6 +24,9 @@ export default function Home() {
       <AddPost />
       <hr className="my-4" />
       {isLoading && 'Loading...'}
+      {data?.map((post: any, i: any) => (
+        <div key={i}>{post.message}</div>
+      ))}
     </main>
   );
 }
