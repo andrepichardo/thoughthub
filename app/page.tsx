@@ -1,8 +1,21 @@
-"use client";
+'use client';
+import axios from 'axios';
+import AddPost from './components/AddPost';
+import { useQuery } from 'react-query';
 
-import AddPost from "./components/AddPost";
+// Fetch all posts
+const allPosts = async () => {
+  const response = await axios.get('/api/posts/getPosts');
+  return response.data;
+};
 
 export default function Home() {
+  const { data, error, isLoading } = useQuery({
+    queryFn: allPosts,
+    queryKey: ['posts'],
+  });
+  if (error) return error;
+
   return (
     <main
       id="scrollbar"
@@ -10,6 +23,7 @@ export default function Home() {
     >
       <AddPost />
       <hr className="my-4" />
+      {isLoading && 'Loading...'}
     </main>
   );
 }
