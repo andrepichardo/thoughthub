@@ -18,14 +18,12 @@ export default function Home() {
   if (error) return error;
 
   return (
-    <main className="w-full h-full flex flex-col min-h-[82vh] max-h-[82vh] ">
+    <main className="w-full h-full flex flex-col ">
+      <div className="h-[69px] mb-5" />
       <AddPost />
-      <div className="my-4 h-0.5 bg-gray-200" />
+      <div className="mt-3 mb-0 h-[2.2px] bg-gray-200" />
       {isLoading && "Loading..."}
-      <div
-        id="scrollbar"
-        className="flex flex-col gap-5 px-2 xs:px-3 md:px-4 2xl:px-6 overflow-auto"
-      >
+      <div className="flex flex-col divide-y-2 bg-white overflow-hidden rounded-b-lg divide-gray-200 relative">
         {data?.map((post: any, i: any) => (
           <Post
             key={post.id}

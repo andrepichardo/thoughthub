@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
+import Image from "next/image";
 
 type Props = {
   id?: string;
@@ -9,9 +9,9 @@ type Props = {
   avatar: string;
 };
 
-const Post = ({ message, avatar, username }: Props) => {
+const Post = ({ message, username, avatar }: Props) => {
   return (
-    <div className="flex items-center gap-2 border-2 rounded-xl py-6 px-5">
+    <div className="flex items-start gap-3  py-4 px-2 xs:px-3 md:px-4 2xl:px-6 cursor-pointer relative hover:bg-gray-100">
       <Image
         className="rounded-full"
         alt="Profile Picture"
@@ -19,9 +19,9 @@ const Post = ({ message, avatar, username }: Props) => {
         width={50}
         height={50}
       />
-      <div className="flex flex-col">
-        <span>{username}</span>
-        <span>{message}</span>
+      <div className="flex flex-col gap-0.5">
+        <p className="font-bold text-red-700">{username}</p>
+        <p className="break-all line-clamp-4">{message}</p>
       </div>
     </div>
   );
