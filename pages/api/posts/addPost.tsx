@@ -28,7 +28,7 @@ export default async function handler(
     if (!message.length) {
       return res
         .status(403)
-        .json({ message: 'Please do not leave the post form empty.' });
+        .json({ message: 'Please do not leave the post field empty.' });
     }
 
     // Create Post
