@@ -3,10 +3,12 @@
 @tailwind utilities;
 
 .containerLayout {
-  @apply mx-auto w-full h-full max-w-4xl ;
+  @apply mx-auto w-full h-full max-w-4xl;
 }
 
-body { background: #fce6e6;}
+body {
+  background: #fce6e6;
+}
 
 ::-webkit-scrollbar {
   width: 10px;

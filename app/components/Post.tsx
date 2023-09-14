@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import Image from "next/image";
+import Image from 'next/image';
 
 type Props = {
   id?: string;
@@ -19,7 +19,7 @@ const Post = ({ message, username, avatar }: Props) => {
         width={50}
         height={50}
       />
-      <div className="flex flex-col gap-0.5">
+      <div className="flex flex-col">
         <p className="font-bold text-red-700">{username}</p>
         <p className="break-all line-clamp-4">{message}</p>
       </div>

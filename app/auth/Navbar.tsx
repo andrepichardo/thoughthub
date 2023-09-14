@@ -1,11 +1,11 @@
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import Login from "./Login";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../pages/api/auth/[...nextauth]";
-import Image from "next/image";
-import Logo from "@/public/logo.png";
-import Logged from "./Logged";
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import Login from './Login';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '../../pages/api/auth/[...nextauth]';
+import Image from 'next/image';
+import Logo from '@/public/logo.png';
+import Logged from './Logged';
 
 export default async function Navbar() {
   const session = await getServerSession(authOptions);
@@ -23,7 +23,7 @@ export default async function Navbar() {
               alt=""
               priority
             />
-            PostItApp
+            ThoughtHub
           </h1>
         </Link>
         <ul>
@@ -31,7 +31,7 @@ export default async function Navbar() {
           {session?.user && (
             <Logged
               name={session.user?.name}
-              image={session.user?.image || ""}
+              image={session.user?.image || ''}
             />
           )}
         </ul>
