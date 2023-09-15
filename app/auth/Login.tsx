@@ -1,20 +1,12 @@
-"use client";
+'use client';
 import type {
   GetServerSidePropsContext,
   InferGetServerSidePropsType,
-} from "next";
+} from 'next';
 
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { getServerSession } from "next-auth";
-import { signIn, getProviders } from "next-auth/react";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { authOptions } from '@/pages/api/auth/[...nextauth]';
+import { getServerSession } from 'next-auth';
+import { signIn, getProviders } from 'next-auth/react';
 
 const Login = ({
   providers,
@@ -27,18 +19,6 @@ const Login = ({
       >
         Sign In
       </button>
-      <Dialog>
-        <DialogTrigger>Open</DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Are you sure absolutely sure?</DialogTitle>
-            <DialogDescription>
-              This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
-            </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
 
       {/* {providers &&
         Object.values(providers).map((provider) => (
@@ -57,7 +37,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const session = await getServerSession(context.req, context.res, authOptions);
 
   if (session) {
-    return { redirect: { destination: "/" } };
+    return { redirect: { destination: '/' } };
   }
 
   const providers = await getProviders();
