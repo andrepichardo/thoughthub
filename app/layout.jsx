@@ -1,11 +1,11 @@
-import { Toaster } from "react-hot-toast";
-import Navbar from "./auth/Navbar";
-import QueryWrapper from "./auth/QueryWrapper";
-import "./globals.css";
+import { Toaster } from 'react-hot-toast';
+import Navbar from './auth/Navbar';
+import QueryWrapper from './auth/QueryWrapper';
+import './globals.css';
 
 export const metadata = {
   title: {
-    default: "PostItApp",
+    default: 'PostItApp',
   },
 };
 
