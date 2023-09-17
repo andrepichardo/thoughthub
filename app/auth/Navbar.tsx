@@ -13,7 +13,7 @@ export default async function Navbar() {
   const session = await getServerSession(authOptions);
 
   return (
-    <header className="fixed max-w-4xl w-full rounded-t-lg py-3.5 z-[100] bg-white">
+    <header className="fixed max-w-4xl w-full rounded-t-lg py-3.5 z-40 bg-white">
       <nav className="px-2 xs:px-3 md:px-4 2xl:px-6 flex justify-between items-center gap-2 min-h-[45px] h-full">
         <Link href="/">
           <h1 className="text-lg font-bold flex items-center gap-1 text-red-500">
