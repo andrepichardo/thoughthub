@@ -33,8 +33,6 @@ export default function Home() {
   });
   if (error) return error;
 
-  console.log(data);
-
   return (
     <main className="w-full h-full flex flex-col min-h-screen">
       <div

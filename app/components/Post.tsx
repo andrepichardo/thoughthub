@@ -12,7 +12,6 @@ type Props = {
 };
 
 const Post = ({ message, username, avatar, id, comments }: Props) => {
-  console.log(comments);
   return (
     <Link
       href={`/post/${id}`}
