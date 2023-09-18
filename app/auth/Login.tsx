@@ -13,7 +13,6 @@ import { FiX } from 'react-icons/fi';
 import Image from 'next/image';
 import Google from '@/public/assets/google.svg';
 import Github from '@/public/assets/github-mark.svg';
-import toast from 'react-hot-toast';
 
 const Login = ({
   providers,
