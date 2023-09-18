@@ -5,6 +5,7 @@ import { useQuery } from 'react-query';
 import { ImSpinner2 } from 'react-icons/im';
 import Post from './components/Post';
 import { useEffect, useState } from 'react';
+import { PostType } from './types/Posts';
 
 // Fetch all posts
 const allPosts = async () => {
@@ -26,11 +27,13 @@ export default function Home() {
     window.addEventListener('scroll', handleShadow);
   }, []);
 
-  const { data, error, isLoading } = useQuery({
+  const { data, error, isLoading } = useQuery<PostType[]>({
     queryFn: allPosts,
     queryKey: ['posts'],
   });
   if (error) return error;
+
+  console.log(data);
 
   return (
     <main className="w-full h-full flex flex-col min-h-screen">
@@ -49,18 +52,20 @@ export default function Home() {
           <ImSpinner2 className="text-5xl text-red-500 animate-spin" />
         </div>
       )}
-      {!isLoading && data.length == 0 && (
+      {!isLoading && data?.length == 0 && (
         <div className="flex items-center justify-center text-gray-300 font-bold text-3xl min-h-[200px] h-full">
           No posts available
         </div>
       )}
       <div className="flex flex-col divide-y-2 flex-grow h-full overflow-hidden rounded-b-lg divide-gray-200 relative">
-        {data?.map((post: any, i: any) => (
+        {data?.map((post) => (
           <Post
             key={post.id}
+            comments={post.comments}
             message={post.message}
             username={post.user.name}
             avatar={post.user.image}
+            id={post.id}
           />
         ))}
       </div>

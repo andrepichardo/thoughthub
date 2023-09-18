@@ -18,7 +18,7 @@ export default async function handler(
 
     // Get User
     const prismaUser = await prisma.user.findUnique({
-      where: { email: session?.user?.email },
+      where: { email: session?.user?.email || undefined },
     });
 
     // Check message
@@ -36,7 +36,7 @@ export default async function handler(
       const result = await prisma.post.create({
         data: {
           message,
-          userId: prismaUser.id,
+          userId: prismaUser?.id as string,
         },
       });
       res.status(200).json(result);

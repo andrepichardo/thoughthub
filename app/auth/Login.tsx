@@ -101,7 +101,7 @@ const Login = ({
                             >
                               {provider.name == 'Google' && (
                                 <Image
-                                  className="absolute left-4 top-0 bottom-0 m-auto"
+                                  className="absolute left-4 top-0 bottom-0 m-auto w-[40px] h-[40px]"
                                   width={40}
                                   height={40}
                                   src={Google}
@@ -110,7 +110,7 @@ const Login = ({
                               )}
                               {provider.name == 'GitHub' && (
                                 <Image
-                                  className="absolute left-4 top-0 bottom-0 m-auto"
+                                  className="absolute left-4 top-0 bottom-0 m-auto w-[40px] h-[40px]"
                                   width={40}
                                   height={40}
                                   src={Github}
