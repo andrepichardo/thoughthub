@@ -7,7 +7,7 @@
 }
 
 body {
-  background: #fce6e6;
+  @apply bg-[url('../public/assets/double-bubble-outline.png')] bg-center;
 }
 
 ::-webkit-scrollbar {

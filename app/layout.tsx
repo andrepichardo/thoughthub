@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="">
+      <body>
         <div className="flex flex-col gap-7 bg-white containerLayout rounded-lg min-h-screen relative shadow-lg">
           <QueryWrapper>
             <Navbar />
