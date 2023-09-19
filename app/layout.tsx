@@ -5,7 +5,7 @@ import './globals.css';
 
 export const metadata = {
   title: {
-    default: 'PostItApp',
+    default: 'ThoughtHub',
   },
 };
 
