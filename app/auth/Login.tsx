@@ -70,7 +70,7 @@ const Login = ({
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-xl bg-white text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg flex justify-center relative py-4 font-medium leading-6 text-white bg-red-500"
+                    className="text-lg flex text-center justify-center relative py-4 font-medium leading-6 text-white bg-red-500"
                   >
                     Login to your account
                     <FiX
@@ -79,7 +79,7 @@ const Login = ({
                       className="absolute top-2 right-2 p-1 rounded-full hover:bg-red-400 cursor-pointer"
                     />
                   </Dialog.Title>
-                  <div className="px-10 py-6">
+                  <div className="px-4 sm:px-10 py-6">
                     <div className="flex flex-col gap-3">
                       {providers &&
                         Object.values(providers).map((provider) => (
@@ -87,7 +87,7 @@ const Login = ({
                             <button
                               className={`px-5 py-5 w-full ${
                                 isLoading && 'cursor-wait text-gray-300'
-                              }  bg-white relative border-2 border-red-100 hover:bg-gray-100 shadow-lg rounded-lg font-semibold outline-none`}
+                              }  bg-white relative border-2 border-red-100 hover:bg-gray-100 shadow-lg rounded-lg font-semibold outline-none text-xs xs:text-sm sm:text-base`}
                               onClick={async () => {
                                 setIsLoading(true);
                                 try {
@@ -100,7 +100,7 @@ const Login = ({
                             >
                               {provider.name == 'Google' && (
                                 <Image
-                                  className="absolute left-4 top-0 bottom-0 m-auto w-[40px] h-[40px]"
+                                  className="absolute left-3 sm:left-4 top-0 bottom-0 m-auto w-[25px] h-[25px] xs:w-[30px] xs:h-[30px] sm:w-[40px] sm:h-[40px]"
                                   width={40}
                                   height={40}
                                   src={Google}
@@ -109,7 +109,7 @@ const Login = ({
                               )}
                               {provider.name == 'GitHub' && (
                                 <Image
-                                  className="absolute left-4 top-0 bottom-0 m-auto w-[40px] h-[40px]"
+                                  className="absolute left-3 sm:left-4 top-0 bottom-0 m-auto w-[25px] h-[25px] xs:w-[30px] xs:h-[30px] sm:w-[40px] sm:h-[40px]"
                                   width={40}
                                   height={40}
                                   src={Github}
