@@ -2,11 +2,14 @@ import { Toaster } from 'react-hot-toast';
 import Navbar from './auth/Navbar';
 import QueryWrapper from './auth/QueryWrapper';
 import './globals.css';
+import { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
+    template: '%s | ThoughtHub ',
     default: 'ThoughtHub',
   },
+  description: 'A thoughts sharing app.',
 };
 
 export default function RootLayout({

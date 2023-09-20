@@ -1,11 +1,15 @@
-import React from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'My Profile',
+};
 
 type Props = {};
 
 export default async function MyProfile({}: Props) {
   return (
-    <main className="w-full h-full flex flex-col min-h-screen">
-      <h1 className="text-2xl"></h1>
+    <main className="w-full h-full flex flex-col flex-grow">
+      <h1 className="text-2xl">My Profile</h1>
     </main>
   );
 }
