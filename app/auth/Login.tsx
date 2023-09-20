@@ -87,7 +87,7 @@ const Login = ({
                             <button
                               className={`px-5 py-5 w-full ${
                                 isLoading &&
-                                'cursor-wait text-gray-300 bg-gray-100'
+                                'cursor-wait text-gray-300 !bg-gray-100'
                               }  bg-white relative border-2 border-red-100 hover:bg-gray-100 shadow-lg rounded-lg font-semibold outline-none text-xs xs:text-sm sm:text-base`}
                               onClick={async () => {
                                 setIsLoading(true);

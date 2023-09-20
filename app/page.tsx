@@ -5,10 +5,9 @@ import NavbarShadow from './components/NavbarShadow';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Home | ThoughtHub ',
+  title: 'Home | ThoughtHub',
 };
 
-// Fetch all posts
 export const allPosts = async () => {
   const response = await axios.get('/api/posts/getPosts');
   return response.data;
