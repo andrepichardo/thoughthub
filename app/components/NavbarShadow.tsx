@@ -20,8 +20,8 @@ const NavbarShadow = () => {
       <div
         className={
           shadow
-            ? 'fixed max-w-4xl w-full h-[73px] shadow-md'
-            : 'fixed max-w-4xl w-full h-[73px]'
+            ? 'fixed max-w-4xl w-full h-[73px] shadow-md z-10'
+            : 'fixed max-w-4xl w-full h-[73px] z-10'
         }
       />
       <div className="h-[73px] mb-5" />
