@@ -16,7 +16,6 @@ export const allPosts = async () => {
 export default function Home() {
   return (
     <main className="w-full h-full flex flex-col min-h-screen">
-      <NavbarShadow />
       <AddPost />
       <div className="mt-3 mb-0 h-[2.2px] bg-gray-200" />
       <DataQuery />

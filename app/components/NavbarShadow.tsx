@@ -1,7 +1,7 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
-const NavbarShadow = () => {
+const NavbarShadow = ({ children }: any) => {
   const [shadow, setShadow] = useState(false);
 
   useEffect(() => {
@@ -17,14 +17,16 @@ const NavbarShadow = () => {
 
   return (
     <>
-      <div
+      <header
         className={
           shadow
-            ? 'fixed max-w-4xl w-full h-[73px] shadow-md z-10'
-            : 'fixed max-w-4xl w-full h-[73px] z-10'
+            ? 'fixed max-w-4xl w-full rounded-t-lg py-3.5 z-40 bg-white shadow-md'
+            : 'fixed max-w-4xl w-full rounded-t-lg py-3.5 z-40 bg-white'
         }
-      />
-      <div className="h-[73px] mb-5" />
+      >
+        {children}
+      </header>
+      <div className="h-[73px]" />
     </>
   );
 };
