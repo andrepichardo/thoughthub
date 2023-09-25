@@ -3,7 +3,6 @@ import Navbar from './auth/Navbar';
 import QueryWrapper from './auth/QueryWrapper';
 import './globals.css';
 import { Metadata } from 'next';
-import NextTopLoader from 'nextjs-toploader';
 
 export const metadata: Metadata = {
   title: {
@@ -23,7 +22,6 @@ export default function RootLayout({
       <body>
         <div className="flex flex-col gap-7 bg-white containerLayout rounded-lg min-h-screen shadow-lg">
           <QueryWrapper>
-            <NextTopLoader color="#ef4444" />
             <Navbar />
             <Toaster />
             {children}
