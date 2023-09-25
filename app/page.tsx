@@ -1,7 +1,6 @@
 import AddPost from './components/AddPost';
 import DataQuery from './components/DataQuery';
 import axios from 'axios';
-import NavbarShadow from './components/NavbarShadow';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

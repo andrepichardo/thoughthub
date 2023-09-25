@@ -1,5 +1,4 @@
 'use client';
-import NavbarShadow from '../components/NavbarShadow';
 
 export default function ProfileLayout({
   children,

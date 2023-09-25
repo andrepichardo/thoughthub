@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import { signOut } from 'next-auth/react';
 import { Fragment, useEffect, useState } from 'react';
-import { CgSpinner } from 'react-icons/cg';
 import Link from 'next/link';
 import { Menu, Transition } from '@headlessui/react';
 import { FiLogOut, FiUser } from 'react-icons/fi';

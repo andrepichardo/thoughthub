@@ -1,5 +1,5 @@
 'use client';
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const NavbarShadow = ({ children }: any) => {
   const [shadow, setShadow] = useState(false);
