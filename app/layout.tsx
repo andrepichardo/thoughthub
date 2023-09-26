@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="flex flex-col gap-7 bg-white containerLayout rounded-lg min-h-screen shadow-lg">
+        <div className="flex flex-col gap-4 bg-white containerLayout rounded-lg min-h-screen shadow-lg">
           <QueryWrapper>
             <Navbar />
             <Toaster />
