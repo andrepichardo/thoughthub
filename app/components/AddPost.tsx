@@ -25,6 +25,7 @@ const AddPost = () => {
         setMessage('');
         setIsDisabled(false);
         queryClient.invalidateQueries(['posts']);
+        queryClient.invalidateQueries(['auth-posts']);
       },
     }
   );

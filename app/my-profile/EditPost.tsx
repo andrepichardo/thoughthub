@@ -28,9 +28,8 @@ const EditPost = ({ username, avatar, message, comments, id }: Props) => {
     async (id: string) =>
       await axios.delete('/api/posts/deletePost', { data: id }),
     {
-      onError: (error) => {
-        if (error instanceof AxiosError)
-          toast.error(error?.response?.data.message, { id: toastPostID });
+      onError: () => {
+        toast.error('Error deleting this post', { id: toastPostID });
       },
       onSuccess: () => {
         toast.success('Post has been deleted successfully', {
