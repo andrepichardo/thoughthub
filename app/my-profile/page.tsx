@@ -9,9 +9,7 @@ export const metadata: Metadata = {
   title: 'My Profile',
 };
 
-type Props = {};
-
-export default async function MyProfile({}: Props) {
+export default async function MyProfile() {
   const session = await getServerSession(authOptions);
   if (!session) {
     redirect('api/auth/signin');
