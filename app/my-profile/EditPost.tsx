@@ -1,20 +1,25 @@
 'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
 type Props = {
-  id?: string;
-  message: string;
+  id: string;
   username: string;
   avatar: string;
-  comments: Object[] | undefined;
+  message: string;
+  comments?: {
+    id: string;
+    postId: string;
+    userId: string;
+  }[];
 };
 
-const Post = ({ message, username, avatar, id, comments }: Props) => {
+const EditPost = ({ username, avatar, message, comments, id }: Props) => {
   return (
     <Link
       href={`/post/${id}`}
-      className="flex items-start gap-3 py-4 px-2 xs:px-3 md:px-4 2xl:px-6 hover:bg-gray-100"
+      className="flex items-start gap-3 py-4 hover:bg-gray-100 px-2 xs:px-3 md:px-4 2xl:px-6"
     >
       <Image
         className="rounded-full"
@@ -34,4 +39,4 @@ const Post = ({ message, username, avatar, id, comments }: Props) => {
   );
 };
 
-export default Post;
+export default EditPost;

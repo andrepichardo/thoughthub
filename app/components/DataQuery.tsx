@@ -24,7 +24,7 @@ const DataQuery = () => {
           No posts available
         </div>
       )}
-      <div className="flex flex-col divide-y-2 flex-grow h-full overflow-hidden rounded-b-lg divide-gray-200 relative">
+      <div className="flex flex-col divide-y-2 flex-grow h-full overflow-hidden rounded-b-lg divide-gray-200">
         {data?.map((post) => (
           <Post
             key={post.id}

@@ -18,7 +18,7 @@ export default async function handler(
 
     // Get User
     const prismaUser = await prisma.user.findUnique({
-      where: { email: session?.user?.email || undefined },
+      where: { email: session.user?.email || undefined },
     });
 
     // Check message
