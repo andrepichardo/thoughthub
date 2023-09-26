@@ -24,7 +24,7 @@ const AddPost = () => {
         toast.success('Post has been made successfully👍', { id: toastPostID });
         setMessage('');
         setIsDisabled(false);
-        queryClient.invalidateQueries('posts');
+        queryClient.invalidateQueries(['posts']);
       },
     }
   );
