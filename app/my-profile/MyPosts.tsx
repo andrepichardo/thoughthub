@@ -17,7 +17,6 @@ const MyPosts = (props: Props) => {
     queryFn: fetchAuthPosts,
     queryKey: ['auth-posts'],
   });
-  console.log(data);
   return (
     <>
       {error && error}
@@ -27,7 +26,7 @@ const MyPosts = (props: Props) => {
         </div>
       )}
       <div className="flex flex-col divide-y-2 flex-grow h-full overflow-hidden rounded-b-lg divide-gray-200 relative">
-        {data?.Post?.map((post) => (
+        {data?.posts?.map((post) => (
           <EditPost
             key={post.id}
             id={post.id}
