@@ -34,6 +34,7 @@ const MyPosts = (props: Props) => {
             username={data.name}
             message={post.message}
             comments={post.comments}
+            createdAt={post.createdAt}
           />
         ))}
       </div>

@@ -7,7 +7,11 @@
 }
 
 body {
-  @apply bg-[url('../public/assets/double-bubble-outline.png')] bg-center;
+  @apply bg-[url('../public/assets/double-bubble-outline.png')] bg-center bg-fixed;
+}
+
+.bgImage {
+  @apply bg-[url('../public/assets/double-bubble-outline.png')] bg-center bg-fixed;
 }
 
 ::-webkit-scrollbar {

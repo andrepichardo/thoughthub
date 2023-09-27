@@ -20,8 +20,8 @@ const PostDetail = (url: URL) => {
   const { data, isLoading } = useQuery<PostType>({
     queryFn: () => fetchDetails(url.params.slug),
     queryKey: ['detail-posts'],
+    cacheTime: 0,
   });
-  console.log(data);
   return (
     <div>
       {isLoading && (
@@ -37,6 +37,7 @@ const PostDetail = (url: URL) => {
             avatar={data.user.image}
             message={data.message}
             comments={data.comments}
+            createdAt={data.createdAt}
           />
         )}
       </div>
