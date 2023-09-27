@@ -2,6 +2,7 @@
 import Post from '@/app/components/Post';
 import { PostType } from '@/app/types/Post';
 import axios from 'axios';
+import { Metadata } from 'next';
 import { ImSpinner2 } from 'react-icons/im';
 import { useQuery } from 'react-query';
 
