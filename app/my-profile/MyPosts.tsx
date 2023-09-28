@@ -25,6 +25,11 @@ const MyPosts = (props: Props) => {
           <ImSpinner2 className="text-5xl text-red-500 animate-spin" />
         </div>
       )}
+      {!isLoading && data?.posts.length == 0 && (
+        <div className="flex items-center justify-center text-gray-300 font-bold text-4xl min-h-[200px] h-full">
+          You haven&apos;t made any posts yet
+        </div>
+      )}
       <div className="flex flex-col divide-y-2 flex-grow h-full overflow-hidden rounded-b-lg divide-gray-200 relative">
         {data?.posts?.map((post) => (
           <EditPost
