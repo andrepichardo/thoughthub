@@ -1,9 +1,8 @@
 'use client';
 import AddComment from '@/app/components/AddComment';
 import Post from '@/app/components/Post';
+import { fetchDetails } from '@/app/components/fetchDetails';
 import { PostType } from '@/app/types/Post';
-import axios from 'axios';
-import { Metadata } from 'next';
 import Image from 'next/image';
 import { ImSpinner2 } from 'react-icons/im';
 import { useQuery } from 'react-query';
@@ -12,11 +11,6 @@ type URL = {
   params: {
     slug: string;
   };
-};
-
-export const fetchDetails = async (slug: string) => {
-  const response = await axios.get(`/api/posts/${slug}`);
-  return response.data;
 };
 
 const PostDetail = (url: URL) => {

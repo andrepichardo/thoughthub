@@ -1,11 +1,5 @@
 import AddPost from './components/AddPost';
 import DataQuery from './components/DataQuery';
-import axios from 'axios';
-
-export const allPosts = async () => {
-  const response = await axios.get('/api/posts/getPosts');
-  return response.data;
-};
 
 function Home() {
   return (

@@ -3,7 +3,12 @@ import Post from '../components/Post';
 import { useQuery } from 'react-query';
 import { ImSpinner2 } from 'react-icons/im';
 import { PostType } from '../types/Posts';
-import { allPosts } from '../page';
+import axios from 'axios';
+
+export const allPosts = async () => {
+  const response = await axios.get('/api/posts/getPosts');
+  return response.data;
+};
 
 const DataQuery = () => {
   const { data, error, isLoading } = useQuery<PostType[]>({

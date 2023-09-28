@@ -8,7 +8,7 @@ import NextTopLoader from 'nextjs-toploader';
 export const metadata: Metadata = {
   title: {
     template: '%s | ThoughtHub ',
-    default: 'ThoughtHub',
+    default: 'Home | ThoughtHub',
   },
   description: 'A thoughts sharing app.',
 };
