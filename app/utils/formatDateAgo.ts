@@ -7,10 +7,10 @@ export const formatDateAgo = (createdAt: string): string => {
 
   if (timeDifference < 60) {
     return `${timeDifference} second${timeDifference !== 1 ? 's' : ''} ago`;
-  } else if (timeDifference < 3600) {
+  } else if (timeDifference >= 60 && timeDifference < 3600) {
     const minutesAgo = Math.floor(timeDifference / 60);
     return `${minutesAgo} minute${minutesAgo !== 1 ? 's' : ''} ago`;
-  } else if (timeDifference < 86400) {
+  } else if (timeDifference >= 3600 && timeDifference < 86400) {
     const hoursAgo = Math.floor(timeDifference / 3600);
     return `${hoursAgo} hour${hoursAgo !== 1 ? 's' : ''} ago`;
   } else {
