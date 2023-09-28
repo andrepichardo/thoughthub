@@ -2,12 +2,11 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { FiTrash2 } from 'react-icons/fi';
 import PostOptions from '../components/PostOptions';
 import { useMutation, useQueryClient } from 'react-query';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import toast from 'react-hot-toast';
-import { useEffect, useState } from 'react';
+import { formatDateAgo } from '../utils/formatDateAgo';
 
 type Props = {
   id: string;
@@ -30,41 +29,6 @@ const EditPost = ({
   id,
   createdAt,
 }: Props) => {
-  const [formattedDate, setFormattedDate] = useState<string>('');
-
-  useEffect(() => {
-    const originalDate = new Date(createdAt);
-    const now = new Date();
-
-    const timeDifference = now.getTime() - originalDate.getTime();
-    const secondsAgo = Math.floor(timeDifference / 1000);
-
-    let formattedString = '';
-
-    if (secondsAgo >= 1 && secondsAgo <= 2) {
-      formattedString = '1 second ago';
-    } else if (secondsAgo < 60) {
-      formattedString = `${secondsAgo} seconds ago`;
-    } else if (secondsAgo >= 60 && secondsAgo <= 120) {
-      formattedString = '1 minute ago';
-    } else if (secondsAgo < 3600) {
-      const minutesAgo = Math.floor(secondsAgo / 60);
-      formattedString = `${minutesAgo} minutes ago`;
-    } else if (secondsAgo >= 3600 && secondsAgo <= 7200) {
-      formattedString = '1 hour ago';
-    } else if (secondsAgo < 86400) {
-      const hoursAgo = Math.floor(secondsAgo / 3600);
-      formattedString = `${hoursAgo} hours ago`;
-    } else if (secondsAgo >= 86400 && secondsAgo <= 172800) {
-      formattedString = '1 day ago';
-    } else {
-      const daysAgo = Math.floor(secondsAgo / 86400);
-      formattedString = `${daysAgo} days ago`;
-    }
-
-    setFormattedDate(formattedString);
-  }, [createdAt]);
-
   let toastPostID: string = 'toastPostID';
   const queryClient = useQueryClient();
 
@@ -110,7 +74,7 @@ const EditPost = ({
               {comments?.length} Comments
             </p>
             <p className="text-xs font-semibold text-gray-400 absolute bottom-4 right-5">
-              {formattedDate}
+              {formatDateAgo(createdAt)}
             </p>
           </div>
         </div>

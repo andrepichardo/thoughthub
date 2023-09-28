@@ -3,6 +3,7 @@ import AddComment from '@/app/components/AddComment';
 import Post from '@/app/components/Post';
 import { fetchDetails } from '@/app/components/fetchDetails';
 import { PostType } from '@/app/types/Post';
+import { formatDateAgo } from '@/app/utils/formatDateAgo';
 import Image from 'next/image';
 import { ImSpinner2 } from 'react-icons/im';
 import { useQuery } from 'react-query';
@@ -61,7 +62,7 @@ const PostDetail = (url: URL) => {
                     </p>
                     <br />
                     <p className="text-xs font-semibold text-gray-400 absolute bottom-0 right-0">
-                      {comment.createdAt}
+                      {formatDateAgo(comment.createdAt)}
                     </p>
                   </div>
                 </div>
