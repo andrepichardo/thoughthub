@@ -1,5 +1,10 @@
+import { Metadata } from 'next';
 import AddPost from './components/AddPost';
 import DataQuery from './components/DataQuery';
+
+export const metadata: Metadata = {
+  title: 'Home | ThoughtHub',
+};
 
 function Home() {
   return (

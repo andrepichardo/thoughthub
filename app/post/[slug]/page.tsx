@@ -7,6 +7,7 @@ import { formatDateAgo } from '@/app/utils/formatDateAgo';
 import Image from 'next/image';
 import { ImSpinner2 } from 'react-icons/im';
 import { useQuery } from 'react-query';
+import Link from 'next/link';
 
 type URL = {
   params: {
@@ -30,6 +31,17 @@ const PostDetail = (url: URL) => {
       {isLoading && (
         <div className="flex justify-center items-center min-h-[200px] h-full">
           <ImSpinner2 className="text-5xl text-red-500 animate-spin" />
+        </div>
+      )}
+      {!isLoading && !data && (
+        <div className="flex flex-col items-center justify-center gap-10 text-center px-5 text-gray-300 font-bold text-2xl md:text-4xl min-h-[200px] h-full">
+          This post is not available or it doesn&apos;t exist
+          <Link
+            className="bg-red-500 hover:bg-red-400 rounded-full px-6 py-2 text-base text-white"
+            href="/"
+          >
+            Back to Home
+          </Link>
         </div>
       )}
       {data && (

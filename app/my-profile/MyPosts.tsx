@@ -5,14 +5,12 @@ import { AuthPosts } from '../types/authPosts';
 import { ImSpinner2 } from 'react-icons/im';
 import EditPost from './EditPost';
 
-type Props = {};
-
 const fetchAuthPosts = async () => {
   const response = await axios.get('/api/posts/authPosts');
   return response.data;
 };
 
-const MyPosts = (props: Props) => {
+const MyPosts = () => {
   const { data, error, isLoading } = useQuery<AuthPosts>({
     queryFn: fetchAuthPosts,
     queryKey: ['auth-posts'],
