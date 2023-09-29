@@ -12,12 +12,18 @@ type Props = {
   username: string;
   avatar: string;
   createdAt: string;
+  updatedAt: string;
   message: string;
   comments?: {
     id: string;
     postId: string;
     userId: string;
   }[];
+};
+
+type Message = {
+  postId?: string;
+  message: string;
 };
 
 const EditPost = ({
@@ -27,6 +33,7 @@ const EditPost = ({
   comments,
   id,
   createdAt,
+  updatedAt,
 }: Props) => {
   let toastPostID: string = 'toastPostID';
   const queryClient = useQueryClient();
@@ -46,6 +53,26 @@ const EditPost = ({
       },
     }
   );
+
+  const mutation = useMutation(
+    (data: Message) => axios.put('/api/posts/editPost', { data }),
+    {
+      onError: () => {
+        toast.error('Error updating this post', { id: toastPostID });
+      },
+      onSuccess: () => {
+        toast.success('Post has been updated successfully', {
+          id: toastPostID,
+        });
+        queryClient.invalidateQueries(['auth-posts']);
+      },
+    }
+  );
+
+  const editPost = (message: string) => {
+    mutation.mutate({ message: message, postId: id });
+    toastPostID = toast.loading('Updating post...', { id: toastPostID });
+  };
 
   const deletePost = () => {
     mutate(id);
@@ -72,14 +99,21 @@ const EditPost = ({
             <p className="text-sm font-bold text-gray-400 mt-3">
               {comments?.length} Comments
             </p>
-            <p className="text-xs font-semibold text-gray-400 absolute bottom-4 right-5">
-              {formatDateAgo(createdAt)}
-            </p>
+            <div className="flex flex-col items-end gap-1 absolute bottom-4 right-5">
+              {createdAt === updatedAt ? null : (
+                <p className="text-[10px] font-semibold text-gray-400 ">
+                  Edited {formatDateAgo(updatedAt)}
+                </p>
+              )}
+              <p className="text-xs font-semibold text-gray-400">
+                {formatDateAgo(createdAt)}
+              </p>
+            </div>
           </div>
         </div>
       </Link>
       <div className="absolute top-2 right-2 rounded-full">
-        <PostOptions deletePost={deletePost} />
+        <PostOptions deletePost={deletePost} editPost={editPost} />
       </div>
     </div>
   );

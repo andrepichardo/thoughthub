@@ -53,6 +53,7 @@ const PostDetail = (url: URL) => {
             message={data.message}
             comments={data.comments}
             createdAt={data.createdAt}
+            updatedAt={data.updatedAt}
           />
           <AddComment id={data?.id} />
           <div className="flex flex-col gap-3 py-5 px-2 xs:px-3 md:px-4 2xl:px-6">

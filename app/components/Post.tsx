@@ -10,6 +10,7 @@ type Props = {
   avatar: string;
   comments: Object[] | undefined;
   createdAt: string;
+  updatedAt: string;
 };
 
 const Post = ({
@@ -19,6 +20,7 @@ const Post = ({
   id,
   comments,
   createdAt,
+  updatedAt,
 }: Props) => {
   return (
     <Link
@@ -38,9 +40,16 @@ const Post = ({
         <p className="text-sm font-bold text-gray-400 mt-3">
           {comments?.length} Comments
         </p>
-        <p className="text-xs font-semibold text-gray-400 absolute bottom-0 right-0">
-          {formatDateAgo(createdAt)}
-        </p>
+        <div className="flex flex-col items-end gap-1 absolute bottom-0 right-0">
+          {createdAt === updatedAt ? null : (
+            <p className="text-[10px] font-semibold text-gray-400 ">
+              Edited {formatDateAgo(updatedAt)}
+            </p>
+          )}
+          <p className="text-xs font-semibold text-gray-400">
+            {formatDateAgo(createdAt)}
+          </p>
+        </div>
       </div>
     </Link>
   );

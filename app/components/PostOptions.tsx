@@ -1,28 +1,52 @@
 'use client';
 
 import { Dialog, Menu, Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { FiEdit2, FiTrash2, FiX } from 'react-icons/fi';
 import { SlOptionsVertical } from 'react-icons/sl';
 
 type Props = {
   deletePost: () => void;
+  editPost: any;
 };
 
-const PostOptions = ({ deletePost }: Props) => {
+const PostOptions = ({ deletePost, editPost }: Props) => {
+  const [comment, setComment] = useState('');
+  const [isDisabled, setIsDisabled] = useState(false);
   let [isOpen, setIsOpen] = useState(false);
-  function closeModal() {
+  let [isOpen2, setIsOpen2] = useState(false);
+  function closeModalDelete() {
     setIsOpen(false);
   }
 
-  function openModal() {
+  function openModalDelete() {
     setIsOpen(true);
   }
 
-  function deletePostAndCloseModal() {
-    deletePost();
-    closeModal();
+  function closeModalEdit() {
+    setIsOpen2(false);
   }
+
+  function openModalEdit() {
+    setIsOpen2(true);
+  }
+
+  function deletePostAndCloseModalDelete() {
+    deletePost();
+    closeModalDelete();
+  }
+
+  function editPostAndCloseModalEdit() {
+    editPost(comment);
+    closeModalEdit();
+  }
+
+  useEffect(() => {
+    comment.length == 0 && setIsDisabled(true);
+    comment.length > 300 && setIsDisabled(true);
+    comment.length > 0 && comment.length <= 300 && setIsDisabled(false);
+  }, [comment.length]);
+
   return (
     <>
       <Menu as="div" className="relative inline-block text-left rounded-full">
@@ -43,6 +67,7 @@ const PostOptions = ({ deletePost }: Props) => {
               <Menu.Item>
                 {({ active }) => (
                   <button
+                    onClick={openModalEdit}
                     className={`${
                       active ? 'bg-red-500 text-white' : 'text-gray-900'
                     } group flex gap-2 w-full items-center rounded-md px-2 py-2 text-sm`}
@@ -61,7 +86,7 @@ const PostOptions = ({ deletePost }: Props) => {
               <Menu.Item>
                 {({ active }) => (
                   <button
-                    onClick={openModal}
+                    onClick={openModalDelete}
                     className={`${
                       active ? 'bg-red-500 text-white' : 'text-gray-900'
                     } group flex gap-2 w-full items-center rounded-md px-2 py-2 text-sm`}
@@ -81,7 +106,7 @@ const PostOptions = ({ deletePost }: Props) => {
       </Menu>
       {/* ---------------------DELETE MODAL------------------------- */}
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-50" onClose={closeModal}>
+        <Dialog as="div" className="relative z-50" onClose={closeModalDelete}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -112,7 +137,7 @@ const PostOptions = ({ deletePost }: Props) => {
                   >
                     Are you sure? 😥
                     <FiX
-                      onClick={closeModal}
+                      onClick={closeModalDelete}
                       size="24"
                       className="absolute top-2 right-2 p-1 rounded-full hover:bg-red-400 cursor-pointer"
                     />
@@ -124,19 +149,101 @@ const PostOptions = ({ deletePost }: Props) => {
                     </p>
                     <div className="flex justify-end gap-3">
                       <button
-                        onClick={closeModal}
+                        onClick={closeModalDelete}
                         className="text-sm bg-white border-2 border-red-500 hover:bg-gray-200 text-red-500 px-4 py-2 rounded-lg font-bold"
                       >
                         Cancel
                       </button>
                       <button
-                        onClick={deletePostAndCloseModal}
+                        onClick={deletePostAndCloseModalDelete}
                         className="text-sm bg-red-500 hover:bg-red-400 text-white px-4 py-2 rounded-lg font-bold"
                       >
                         Delete
                       </button>
                     </div>
                   </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
+      {/* ---------------------EDIT MODAL------------------------- */}
+      <Transition appear show={isOpen2} as={Fragment}>
+        <Dialog as="div" className="relative z-50" onClose={closeModalEdit}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black bg-opacity-25" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-xl bg-white text-left align-middle shadow-xl transition-all">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg flex text-center justify-center relative py-4 font-medium leading-6 text-white bg-red-500"
+                  >
+                    Edit your post ✏️
+                    <FiX
+                      onClick={closeModalEdit}
+                      size="24"
+                      className="absolute top-2 right-2 p-1 rounded-full hover:bg-red-400 cursor-pointer"
+                    />
+                  </Dialog.Title>
+                  <form
+                    onSubmit={editPostAndCloseModalEdit}
+                    className=" py-4 px-2 xs:px-3 md:px-4 2xl:px-6 flex flex-col gap-2"
+                  >
+                    <h3 className="text-gray-400 font-semibold text-base flex items-center gap-2">
+                      Edit your post:
+                    </h3>
+                    <div className="flex flex-col gap-3">
+                      <textarea
+                        onChange={(e) => setComment(e.target.value)}
+                        value={comment}
+                        name="comment"
+                        className="p-4 text-base bg-gray-50 rounded-md resize-none border-2 outline-none focus:border-red-300"
+                      />
+                      <div className="flex items-center justify-between gap-2">
+                        <p
+                          className={`font-bold ${
+                            comment.length > 300
+                              ? 'text-red-500'
+                              : 'text-gray-400'
+                          }`}
+                        >
+                          {comment.length}/300
+                        </p>
+                        <button
+                          disabled={isDisabled}
+                          className={`text-sm  ${
+                            isDisabled
+                              ? 'bg-red-300 cursor-not-allowed'
+                              : 'bg-red-500 hover:bg-red-400'
+                          } text-white px-5 py-2 rounded-lg font-bold self-end`}
+                          type="submit"
+                        >
+                          Update post
+                        </button>
+                      </div>
+                    </div>
+                  </form>
                 </Dialog.Panel>
               </Transition.Child>
             </div>

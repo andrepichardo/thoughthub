@@ -5,6 +5,7 @@ export type AuthPosts = {
   name: string;
   posts: {
     createdAt: string;
+    updatedAt: string;
     id: string;
     message: string;
     comments?: {

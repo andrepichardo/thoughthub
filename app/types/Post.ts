@@ -2,6 +2,7 @@ export type PostType = {
   id: string;
   message: string;
   createdAt: string;
+  updatedAt: string;
   user: {
     email: string;
     id: string;

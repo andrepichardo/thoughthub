@@ -38,6 +38,7 @@ const MyPosts = () => {
             message={post.message}
             comments={post.comments}
             createdAt={post.createdAt}
+            updatedAt={post.updatedAt}
           />
         ))}
       </div>

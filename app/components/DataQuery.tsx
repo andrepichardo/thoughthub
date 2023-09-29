@@ -39,6 +39,7 @@ const DataQuery = () => {
             avatar={post.user.image}
             id={post.id}
             createdAt={post.createdAt}
+            updatedAt={post.updatedAt}
           />
         ))}
       </div>
