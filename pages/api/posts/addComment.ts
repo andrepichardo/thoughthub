@@ -28,7 +28,7 @@ export default async function handler(
       if (!comment.length) {
         return res
           .status(403)
-          .json({ comment: 'Please do not leave the comment field empty.' });
+          .json({ message: 'Please do not leave the field empty.' });
       }
       const result = await prisma.comment.create({
         data: {

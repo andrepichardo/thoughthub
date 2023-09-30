@@ -97,7 +97,8 @@ const EditPost = ({
             <p className="font-bold text-red-600">{username}</p>
             <p className="break-all line-clamp-4">{message}</p>
             <p className="text-sm font-bold text-gray-400 mt-3">
-              {comments?.length} Comments
+              {comments?.length}{' '}
+              {comments?.length == 1 ? 'comment' : 'comments'}
             </p>
             <div className="flex flex-col items-end gap-1 absolute bottom-4 right-5">
               {createdAt === updatedAt ? null : (

@@ -21,9 +21,7 @@ export default async function handler(
       });
       res.status(200).json(result);
     } catch (err) {
-      res
-        .status(403)
-        .json({ err: 'Error has occurred while getting auth users posts.' });
+      res.status(403).json({ err: 'Error has occurred while deleting post' });
     }
   }
 }

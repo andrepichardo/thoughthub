@@ -1,5 +1,5 @@
 'use client';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useMutation, useQueryClient } from 'react-query';
@@ -23,8 +23,9 @@ const AddComment = ({ id }: Props) => {
   const { mutate } = useMutation(
     async (data: Comment) => axios.post('/api/posts/addComment', { data }),
     {
-      onError: () => {
-        toast.error('Error ocurred while adding comment', { id: toastPostID });
+      onError: (error) => {
+        if (error instanceof AxiosError)
+          toast.error(error?.response?.data.message, { id: toastPostID });
         setIsDisabled(false);
       },
       onSuccess: () => {

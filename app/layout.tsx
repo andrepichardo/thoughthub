@@ -4,6 +4,7 @@ import QueryWrapper from './auth/QueryWrapper';
 import './globals.css';
 import { Metadata } from 'next';
 import NextTopLoader from 'nextjs-toploader';
+import { RiErrorWarningFill } from 'react-icons/ri';
 
 export const metadata: Metadata = {
   title: {
@@ -26,7 +27,15 @@ export default function RootLayout({
         <div className="flex flex-col gap-4 bg-white containerLayout rounded-lg min-h-screen shadow-lg">
           <QueryWrapper>
             <Navbar />
-            <Toaster />
+            <Toaster
+              toastOptions={{
+                error: {
+                  icon: (
+                    <RiErrorWarningFill className="text-yellow-400" size="20" />
+                  ),
+                },
+              }}
+            />
             {children}
           </QueryWrapper>
         </div>
