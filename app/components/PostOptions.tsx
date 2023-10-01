@@ -142,7 +142,7 @@ const PostOptions = ({ deletePost, editPost }: Props) => {
                       className="absolute top-2 right-2 p-1 rounded-full hover:bg-red-400 cursor-pointer"
                     />
                   </Dialog.Title>
-                  <div className="flex flex-col gap-4 px-4 sm:px-10 py-6">
+                  <div className="flex flex-col gap-4 px-4 xl:px-6 py-6">
                     <p className="text-sm font-semibold text-justify">
                       This will delete this post permanently. You cannot undo
                       this action.
@@ -208,7 +208,7 @@ const PostOptions = ({ deletePost, editPost }: Props) => {
                   </Dialog.Title>
                   <form
                     onSubmit={editPostAndCloseModalEdit}
-                    className=" py-4 px-2 xs:px-3 md:px-4 2xl:px-6 flex flex-col gap-2"
+                    className=" py-4 px-4 xl:px-6 flex flex-col gap-2"
                   >
                     <h3 className="text-gray-400 font-semibold text-base flex items-center gap-2">
                       Edit your post:
