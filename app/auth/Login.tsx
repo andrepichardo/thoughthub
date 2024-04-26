@@ -37,6 +37,7 @@ const Login = ({
   return (
     <li className="list-none">
       <button
+        type="button"
         className="text-sm bg-red-500 hover:bg-red-400 text-white px-4 py-2 rounded-lg font-bold"
         onClick={openModal}
       >
@@ -85,6 +86,7 @@ const Login = ({
                         Object.values(providers).map((provider) => (
                           <div className="w-full" key={provider.name}>
                             <button
+                              type="button"
                               className={`px-5 py-5 w-full ${
                                 isLoading &&
                                 'cursor-wait text-gray-300 !bg-gray-100'
