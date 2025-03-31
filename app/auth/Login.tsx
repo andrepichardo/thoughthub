@@ -11,6 +11,8 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useEffect, useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import Image from 'next/image';
+import Google from '@/public/assets/google.svg';
+import Github from '@/public/assets/github-mark.svg';
 
 const Login = ({
   providers,
@@ -106,7 +108,7 @@ const Login = ({
                                   className="absolute left-3 sm:left-4 top-0 bottom-0 m-auto w-[25px] h-[25px] xs:w-[30px] xs:h-[30px] sm:w-[40px] sm:h-[40px]"
                                   width={40}
                                   height={40}
-                                  src="@/public/assets/google.svg"
+                                  src={Google}
                                   alt=""
                                 />
                               )}
@@ -115,7 +117,7 @@ const Login = ({
                                   className="absolute left-3 sm:left-4 top-0 bottom-0 m-auto w-[25px] h-[25px] xs:w-[30px] xs:h-[30px] sm:w-[40px] sm:h-[40px]"
                                   width={40}
                                   height={40}
-                                  src="@/public/assets/github-mark.svg"
+                                  src={Github}
                                   alt=""
                                 />
                               )}
