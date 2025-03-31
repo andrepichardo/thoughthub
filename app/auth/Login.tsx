@@ -11,19 +11,19 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useEffect, useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import Image from 'next/image';
-import Google from '@/public/assets/google.svg';
-import Github from '@/public/assets/github-mark.svg';
 
 const Login = ({
   providers,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  let [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     isLoading
-      ? (document.body.style.cursor = 'wait')
-      : (document.body.style.cursor = 'default');
+      ? // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+        (document.body.style.cursor = 'wait')
+      : // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
+        (document.body.style.cursor = 'default');
   }, [isLoading]);
 
   function closeModal() {
@@ -101,21 +101,21 @@ const Login = ({
                               }}
                               disabled={isLoading}
                             >
-                              {provider.name == 'Google' && (
+                              {provider.name === 'Google' && (
                                 <Image
                                   className="absolute left-3 sm:left-4 top-0 bottom-0 m-auto w-[25px] h-[25px] xs:w-[30px] xs:h-[30px] sm:w-[40px] sm:h-[40px]"
                                   width={40}
                                   height={40}
-                                  src={Google}
+                                  src="@/public/assets/google.svg"
                                   alt=""
                                 />
                               )}
-                              {provider.name == 'GitHub' && (
+                              {provider.name === 'GitHub' && (
                                 <Image
                                   className="absolute left-3 sm:left-4 top-0 bottom-0 m-auto w-[25px] h-[25px] xs:w-[30px] xs:h-[30px] sm:w-[40px] sm:h-[40px]"
                                   width={40}
                                   height={40}
-                                  src={Github}
+                                  src="@/public/assets/github-mark.svg"
                                   alt=""
                                 />
                               )}
